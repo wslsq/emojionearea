@@ -1027,10 +1027,12 @@
 					emojioneSupportMode = getSupportMode(emojioneVersion);
 					cdn.base = cdn.defaultBase + emojioneVersion + "/assets";
 					var sprite = cdn.base +"/sprites/emojione.sprites.css";
-					if (document.createStyleSheet) {
-						document.createStyleSheet(sprite);
-					} else {
-						$('<link/>', {rel: 'stylesheet', href: sprite}).appendTo('head');
+					if (options.sprite==true){
+						if (document.createStyleSheet) {
+							document.createStyleSheet(sprite);
+						} else {
+							$('<link/>', {rel: 'stylesheet', href: sprite}).appendTo('head');
+						}
 					}
 					while (readyCallbacks.length) {
 						readyCallbacks.shift().call();
